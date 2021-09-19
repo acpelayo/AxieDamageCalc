@@ -207,7 +207,7 @@
             </div>
         </div>
         <script>
-            const table = document.querySelector('table');
+            const table = document.querySelector('table tbody');
             const damage = document.querySelector('#damage');
             const selection = document.querySelector('#selection');
             const reset = document.querySelector('button[type="reset"]');
@@ -231,17 +231,17 @@
                     const newVal = window.prompt('Enter new value:');
                     if (!newVal) return;
 
-                    // update cell
-                    if (t.children.length) t.children[0].textContent = newVal;
-                    else t.textContent = newVal;
-
                     // update storage
                     const { row, col, classIndex } = t.dataset;
                     if (row >= 0 && col >= 0) grid[row][col] = newVal;
                     else if (classIndex >= 0) classes[classIndex] = newVal;
+                    else return;
                     updateStorage();
 
-                    console.log(grid, classes);
+                    // update cell
+                    if (t.children.length) t.children[0].textContent = newVal;
+                    else t.textContent = newVal;
+
                     return;
                 }
 
