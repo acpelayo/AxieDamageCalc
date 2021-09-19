@@ -213,7 +213,7 @@
             const reset = document.querySelector('button[type="reset"]');
             const save = document.querySelector('#save');
             const load = document.querySelector('#load');
-            let grid = JSON.parse(localStorage.getItem('grid')) || new Array(12).fill(['Card', 0, 0, 0]);
+            let grid = JSON.parse(localStorage.getItem('grid')) || new Array(12).fill(null).map(() => ['Card', 0, 0, 0]);
             let classes = JSON.parse(localStorage.getItem('classes')) || new Array(3).fill('Class');
 
             table.addEventListener('click', tableClickHandler);
